@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import dataUsers from './users_bd.json';
 
 export const AuthContext = createContext({});
 
@@ -19,7 +20,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const signin = (email, password) => {
-    const usersStorage = JSON.parse(localStorage.getItem("users_bd"));
+    const usersStorage = dataUsers;
 
     const hasUser = usersStorage?.filter((user) => user.email === email);
 
@@ -30,33 +31,11 @@ export const AuthProvider = ({ children }) => {
         setUser({ email, password });
         return;
       } else {
-        return "e-mail ou senha está inválido";
+        return "email ou senha está inválido";
       }
     } else {
       return "Usuário não cadastrado";
     }
-  };
-
-  const signup = (email, password) => {
-    const usersStorage = JSON.parse(localStorage.getItem("users_bd"));
-
-    const hasUser = usersStorage?.filter((user) => user.email === email);
-
-    if (hasUser?.length) {
-      return "Já tem uma conta com esse E-mail";
-    }
-
-    let newUser;
-
-    if (usersStorage) {
-      newUser = [...usersStorage, { email, password }];
-    } else {
-      newUser = [{ email, password }];
-    }
-
-    localStorage.setItem("users_bd", JSON.stringify(newUser));
-
-    return;
   };
 
   const signout = () => {
@@ -66,7 +45,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, signed: !!user, signin, signup, signout }}
+      value={{ user, signed: !!user, signin, signout }}
     >
       {children}
     </AuthContext.Provider>

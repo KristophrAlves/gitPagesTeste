@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Typography, Grid } from "@mui/material";
 import InputDropDown from "../../../components/InputDropDown";
 import { axiosInstance, createMarvelAPIUrl } from "../../../baseUrls/axiosInstance";
+import { CustomButtonPrimary, CustomButtonSecondary, CustomContainer, CustomSubTitle, CustomTextButton, CustomTitle, Customdot } from "./Styles";
 
 const Step4 = () => {
     const theme = useTheme();
@@ -42,68 +43,12 @@ const Step4 = () => {
         }
     };
 
-    const styles = {
-        container: {
-            maxWidth: 380,
-            maxHeight: 433,
-            paddingTop: 49,
-            paddingLeft: 30,
-            paddingRight: 30,
-            borderRadius: 28,
-            backgroundColor: theme.colors.white,
-        },
-        title: {
-            color: theme.colors.blue600,
-            textAlign: 'left',
-            fontFamily: 'Epilogue',
-            fontSize: 36,
-            fontStyle: 'normal',
-            fontWeight: '700',
-            lineHeight: 'normal',
-            letterSpacing: -2.34
-        },
-        infoText: {
-            color: theme.colors.gray500,
-            fontFamily: 'Epilogue',
-            fontSize: 16,
-            fontStyle: 'normal',
-            fontWeight: '400',
-            lineHeight: "127%",
-            letterSpacing: -1.04,
-            paddingTop: 16,
-        },
-        button: {
-            display: "flex",
-            width: "100%",
-            height: 57,
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-            flexShrink: 0,
-            backgroundColor: theme.colors.blue600,
-            borderRadius: 8
-        },
-        buttonText: {
-            textTransform: "none",
-            color: theme.colors.ray150,
-            fontFamily: 'Epilogue',
-            fontSize: 16,
-            fontStyle: 'normal',
-            fontWeight: '600',
-            lineHeight: 'normal'
-        },
-        errorMessage: {
-            textAlign: 'center',
-            color: theme.colors.orange700
-        }
-    };
-
     return (
-        <Grid item xs={12} style={styles.container}>
-            <Typography style={styles.title}>Selecione o seu agente mais legal.</Typography>
-            <Typography style={styles.infoText}>
+        <CustomContainer>
+            <CustomTitle>Selecione o seu agente mais legal<Customdot>.</Customdot></CustomTitle>
+            <CustomSubTitle>
                 Tenha a visão completa do seu agente.
-            </Typography>
+            </CustomSubTitle>
 
             <Grid item xs={12} style={{ paddingTop: 9, paddingBottom: 16 }}>
 
@@ -112,18 +57,17 @@ const Step4 = () => {
             </Grid>
 
             <Grid item xs={12} style={{ paddingBottom: 48, display: 'flex', justifyContent: 'flex-end' }}>
-                <Button
+                <CustomButtonSecondary
                     variant="contained"
                     color="primary"
                     onClick={() => navigate(`/Perfil/${characterSelected.id}`)}
-                    style={styles.button}
                 >
-                    <Typography variant="button" style={styles.buttonText}>
+                    <CustomTextButton>
                         Entrar
-                    </Typography>
-                </Button>
+                    </CustomTextButton>
+                </CustomButtonSecondary>
             </Grid>
-        </Grid>
+        </CustomContainer>
     );
 };
 

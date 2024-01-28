@@ -7,6 +7,7 @@ import TextField from "@mui/material/TextField";
 import { InputAdornment, Typography, Grid } from "@mui/material";
 import InputOutlinedIcon from '@mui/icons-material/InputOutlined';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+import { CustomButtonPrimary, CustomContainer, CustomSubTitle, CustomTextButton, CustomTitle, Customdot } from "./Styles";
 
 const Step3 = ({ SetCurrentStep }) => {
     const theme = useTheme();
@@ -93,25 +94,24 @@ const Step3 = ({ SetCurrentStep }) => {
     };
 
     return (
-        <Grid item xs={12} style={styles.loginContainer}>
-            <Typography style={styles.welcomeText}>Tudo certo ;)</Typography>
-            <Typography style={styles.infoText}>
+        <CustomContainer>
+            <CustomTitle>Tudo certo <Customdot>;)</Customdot></CustomTitle>
+            <CustomSubTitle>
                 Foi enviado um e-mail para você com instruções de como redefinir a sua senha.
-            </Typography>
+            </CustomSubTitle>
 
-            <Grid item xs={12} style={{ paddingTop: 26, paddingBottom: 78 }}>
-                <Button
+            <Grid item xs={12} style={{ paddingTop: 26, paddingBottom: 190 }}>
+                <CustomButtonPrimary
                     variant="contained"
                     color="primary"
                     onClick={() => SetCurrentStep(1)}
-                    style={styles.loginButton}
                 >
-                    <Typography variant="button" style={styles.loginButtonText}>
+                    <CustomTextButton>
                         voltar para o login
-                    </Typography>
-                </Button>
+                    </CustomTextButton>
+                </CustomButtonPrimary>
             </Grid>
-        </Grid>
+        </CustomContainer>
     );
 };
 
