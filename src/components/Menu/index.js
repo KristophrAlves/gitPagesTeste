@@ -13,7 +13,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 const drawerWidth = 240;
 
 const Menu = ({ children }, props) => {
-    const { window } = props;
+    const { wd } = props;
     const theme = useTheme();
     const navigate = useNavigate();
     const { signout } = useAuth();
@@ -36,7 +36,7 @@ const Menu = ({ children }, props) => {
         }
     };
 
-    const container = window !== undefined ? () => window().document.body : undefined;
+    const container = wd !== undefined ? () => window().document.body : undefined;
 
     return (
         <Box sx={{ display: 'flex', backgroundColor: 'white' }}>
@@ -86,7 +86,7 @@ const Menu = ({ children }, props) => {
             </Box>
 
             <Grid style={{ width: '100%', height: '100vh' }}>
-                <Box component="main" sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}>
+                <Box component="main" sx={{ flexGrow: 1, p: 3, width: { sx: `calc(100% - ${drawerWidth}px)` } }}>
                     <Toolbar />
                     <Box>{children}</Box>
                 </Box>

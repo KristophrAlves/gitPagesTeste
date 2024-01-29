@@ -64,7 +64,7 @@ const Step4 = () => {
                 <CustomButtonSecondary
                     variant="contained"
                     color="primary"
-                    onClick={() => navigate(`/Perfil/${characterSelected.id}`)}
+                    onClick={() => navigate(`/perfil/${characterSelected.id}`)}
                 >
                     <CustomTextButton>
                         Entrar

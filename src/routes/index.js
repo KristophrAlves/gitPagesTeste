@@ -6,11 +6,12 @@ import Home from "../pages/Home";
 import Perfil from "../pages/Perfil";
 import Signin from "../pages/Signin/index";
 import CircularProgress from "@mui/material/CircularProgress";
+import Menu from "../components/Menu";
 
 const Private = ({ Item }) => {
   const { signed } = useAuth();
   const [loading, setLoading] = useState(true);
-
+  
   useEffect(() => {
     const checkAuthentication = async () => {
       setTimeout(() => {
@@ -34,7 +35,7 @@ const Private = ({ Item }) => {
     );
   }
 
-  return signed ? <Item /> : <Signin />;
+  return signed ? <Menu><Item /></Menu> : <Signin />;
 };
 
 const RoutesApp = () => {

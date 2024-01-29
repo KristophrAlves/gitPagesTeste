@@ -13,6 +13,7 @@ import UserRed from "../../assets/images/userRed.svg";
 import Logo from "../../assets/images/PontuaLogoSecondary.svg";
 import ArrowBack from "../../assets/images/corner-up-left.svg";
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
+import { useEffect, useState } from "react";
 
 const SideMenu = ({
     theme,
@@ -21,6 +22,32 @@ const SideMenu = ({
     currentStep,
     SetCurrentStep
 }) => {
+    const [urlNumb, setUrlNumb] = useState(0);
+
+    useEffect(() => {
+        getUrl();
+    }, [window.location.pathname]);
+
+    const getUrl = () => {
+        const urlName = window.location.pathname.match(/\/(\w+)/);
+        if (urlName && urlName[1]) {
+            renderStep(urlName[1]);
+        }
+    }
+
+    const renderStep = (urlName) => {
+        switch (urlName) {
+            case 'home':
+                setUrlNumb(1);
+                break;
+            case 'perfil':
+                setUrlNumb(2);
+                break;
+            default:
+                setUrlNumb(0);
+                break;
+        }
+    };
 
     const StyleBase = {
         fontFamily: 'Epilogue',
@@ -32,24 +59,24 @@ const SideMenu = ({
 
     const items = [
         {
-            action: () => SetCurrentStep(1),
+            action: () => [navigate('/home'), SetCurrentStep(1), getUrl()],
             icon: <DashboardOutlinedIcon
-                style={{ color: currentStep === 1 ? theme.colors.orange500 : theme.colors.black }}
+                style={{ color: currentStep && urlNumb === 1 ? theme.colors.orange500 : theme.colors.black }}
             />,
             style: {
-                color: currentStep === 1 ? theme.colors.orange500 : '#000000',
+                color: currentStep && urlNumb === 1 ? theme.colors.orange500 : '#000000',
                 StyleBase
             },
             name: 'Home'
         },
         {
-            action: () => SetCurrentStep(2),
+            action: () => [navigate(`/perfil/${0}`), SetCurrentStep(2), getUrl()],
             icon: <img
-                src={currentStep === 2 ? UserRed : User} alt="icone user" color={theme.colors.orange500}
+                src={currentStep && urlNumb === 2 ? UserRed : User} alt="icone user" color={theme.colors.orange500}
                 height={24}
             />,
             style: {
-                color: currentStep === 2 ? theme.colors.orange500 : '#000000',
+                color: currentStep && urlNumb === 2 ? theme.colors.orange500 : '#000000',
                 StyleBase
             },
             name: 'Perfil'
