@@ -28,6 +28,8 @@ const Signin = () => {
 
   const styles = {
     root: {
+      maxWidth: '1366px',
+      margin: '0 auto',
       width: '100%'
     },
     logoContainer: {
@@ -43,22 +45,20 @@ const Signin = () => {
   };
 
   return (
-    <Grid style={styles.root}>
-      <Grid spacing={3}>
-        <Grid item xs={12} style={styles.logoContainer}>
-          <img src={Logo} alt="Logo Pontua" style={{ maxWidth: "100%" }} />
+    <Grid spacing={3} style={styles.root}>
+      <Grid item xs={12} style={styles.logoContainer}>
+        <img src={Logo} alt="Logo Pontua" style={{ maxWidth: "100%" }} />
+      </Grid>
+
+      <Grid item container xs={12} style={styles.buildingContainer}>
+        <Grid item xs={6} style={styles.buildingImage}>
+          <img src={Building} alt="Predio" />
         </Grid>
 
-        <Grid item container xs={12} style={styles.buildingContainer}>
-          <Grid item xs={6} style={styles.buildingImage}>
-            <img src={Building} alt="Predio" />
-          </Grid>
+        <Grid item xs={6} style={{ display: 'flex', alignSelf: 'center', justifyContent: 'center' }}>
 
-          <Grid item xs={6} style={{ display: 'flex', alignSelf: 'center', justifyContent: 'center' }}>
+          {renderStep()}
 
-            {renderStep()}
-
-          </Grid>
         </Grid>
       </Grid>
     </Grid>

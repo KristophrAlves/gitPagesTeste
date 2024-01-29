@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import Button from "@mui/material/Button";
+import React from "react";
 import { useTheme } from "styled-components";
-import useAuth from "../../../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
-import TextField from "@mui/material/TextField";
-import { InputAdornment, Typography, Grid } from "@mui/material";
-import InputOutlinedIcon from '@mui/icons-material/InputOutlined';
-import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
-import { CustomButtonPrimary, CustomContainer, CustomSubTitle, CustomTextButton, CustomTitle, Customdot } from "./Styles";
+import { Grid } from "@mui/material";
+import {
+    CustomButtonPrimary,
+    CustomContainer,
+    CustomSubTitle,
+    CustomTextButton,
+    CustomTitle,
+    Customdot
+} from "./Styles";
 
 const Step3 = ({ SetCurrentStep }) => {
     const theme = useTheme();

@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
-import Button from "@mui/material/Button";
-import { useTheme } from "styled-components";
+import { Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { Typography, Grid } from "@mui/material";
 import InputDropDown from "../../../components/InputDropDown";
 import { axiosInstance, createMarvelAPIUrl } from "../../../baseUrls/axiosInstance";
-import { CustomButtonPrimary, CustomButtonSecondary, CustomContainer, CustomSubTitle, CustomTextButton, CustomTitle, Customdot } from "./Styles";
+import {
+    CustomButtonSecondary,
+    CustomContainer,
+    CustomSubTitle,
+    CustomTextButton,
+    CustomTitle,
+    Customdot
+} from "./Styles";
 
 const Step4 = () => {
-    const theme = useTheme();
-    const navigate = useNavigate();
 
+    const navigate = useNavigate();
     const [characterSelected, setCharacterSelected] = useState('');
     const [characterInfo, setCharacterInfo] = useState([]);
 

@@ -1,15 +1,40 @@
-import { Fragment } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import Box from "@mui/material/Box";
 import Home from "../pages/Home";
 import Perfil from "../pages/Perfil";
 import Signin from "../pages/Signin/index";
-// import Signup from "../pages/Signup";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const Private = ({ Item }) => {
   const { signed } = useAuth();
+  const [loading, setLoading] = useState(true);
 
-  return signed > 0 ? <Item /> : <Signin />;
+  useEffect(() => {
+    const checkAuthentication = async () => {
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
+    };
+
+    checkAuthentication();
+  }, []);
+
+  if (loading) {
+    return (
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        height="100vh"
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
+
+  return signed ? <Item /> : <Signin />;
 };
 
 const RoutesApp = () => {
@@ -20,7 +45,6 @@ const RoutesApp = () => {
           <Route exact path="/home" element={<Private Item={Home} />} />
           <Route path="/perfil/:id" element={<Private Item={Perfil} />} />
           <Route path="/" element={<Signin />} />
-          {/* <Route exact path="/signup" element={<Signup />} /> */}
           <Route path="*" element={<Signin />} />
         </Routes>
       </Fragment>

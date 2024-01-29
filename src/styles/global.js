@@ -10,10 +10,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    max-width: 1366px;
-    margin: 0 auto;
     background-color: ${props => (props.theme.colors.blue800)};
-    font-family: Arial, Helvetica, sans-serif;
   }
 `;
 

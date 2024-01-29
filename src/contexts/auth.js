@@ -8,10 +8,10 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const userToken = localStorage.getItem("user_token");
-    const usersStorage = localStorage.getItem("users_bd");
+    const usersStorage = dataUsers;
 
     if (userToken && usersStorage) {
-      const hasUser = JSON.parse(usersStorage)?.filter(
+      const hasUser = usersStorage?.filter(
         (user) => user.email === JSON.parse(userToken).email
       );
 
@@ -39,6 +39,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const signout = () => {
+    console.log('teste')
     setUser(null);
     localStorage.removeItem("user_token");
   };
