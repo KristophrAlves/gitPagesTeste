@@ -84,7 +84,7 @@ const Home = () => {
 
   return (
     <Box sx={{ flexGrow: 1, maxWidth: `calc(1366px - 240px)` }}>
-      <Grid container spacing={2} columns={{ xs: 4, sm: 8, md: 12 }}>
+      <Grid container spacing={2} columns={{ xs: 4, sm: 6, md: 12 }}>
         {characterInfo.map((character, index) => (
           <Button
             key={character.id}

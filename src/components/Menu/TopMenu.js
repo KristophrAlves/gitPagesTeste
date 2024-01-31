@@ -88,14 +88,13 @@ const TopMenu = ({
                 borderBottom: '1px solid #EBEFF2'
             }}
         >
-
             <Toolbar style={{ backgroundColor: 'white' }}>
                 <IconButton
                     color="inherit"
                     aria-label="open drawer"
                     edge="start"
                     onClick={() => handleDrawerToggle()}
-                    sx={{ mr: 2, display: { sm: 'none' } }}
+                    sx={{ mr: 2, display: { sm: 'none', backgroundColor: theme.colors.blue200 } }}
                 >
                     <MenuIcon />
                 </IconButton>

@@ -90,7 +90,8 @@ const Menu = ({ children }, props) => {
                     sx={{
                         flexGrow: 1,
                         p: 4,
-                        width: { sx: `calc(100% - ${drawerWidth}px)` }
+                        width: { sx: `calc(100% - ${drawerWidth}px)` },
+                        backgroundColor: theme.colors.white
                     }}>
                     <Toolbar />
                     <Box>{children}</Box>
