@@ -39,7 +39,6 @@ export const AuthProvider = ({ children }) => {
   };
 
   const signout = () => {
-    console.log('teste')
     setUser(null);
     localStorage.removeItem("user_token");
   };

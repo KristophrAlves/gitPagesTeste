@@ -70,7 +70,7 @@ const SideMenu = ({
             name: 'Home'
         },
         {
-            action: () => [navigate(`/perfil/${0}`), SetCurrentStep(2), getUrl()],
+            action: () => [],
             icon: <img
                 src={currentStep && urlNumb === 2 ? UserRed : User} alt="icone user" color={theme.colors.orange500}
                 height={24}

@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Box, Grid, Paper, Typography, Pagination, Stack, Button } from "@mui/material";
-import { experimentalStyled as styled } from "@mui/material/styles";
-import { useTheme } from "styled-components";
-import { axiosInstance, createMarvelAPIUrl } from "../../baseUrls/axiosInstance";
 import { useNavigate } from "react-router";
+import { useTheme } from "styled-components";
+import { experimentalStyled as styled } from "@mui/material/styles";
+import { axiosInstance, createMarvelAPIUrl } from "../../baseUrls/axiosInstance";
+import { Box, Grid, Paper, Typography, Pagination, Stack, Button, Divider } from "@mui/material";
 
 const Home = () => {
-  const [characterInfo, setCharacterInfo] = useState([]);
-  const [currentPage, setCurrentPage] = useState(0);
   const [offset, setOffset] = useState(0)
   const [pagination, setPagination] = useState(10)
+  const [currentPage, setCurrentPage] = useState(0);
+  const [characterInfo, setCharacterInfo] = useState([]);
 
 
   const handlePaginationChange = (page, event) => {
@@ -150,17 +150,22 @@ const Home = () => {
           </Button>
         ))}
       </Grid>
-      <Box mt={2} display="flex" justifyContent="center">
-        <Stack spacing={2}>
-          <Pagination
-            count={pagination}
-            variant="outlined"
-            shape="rounded"
-            onChange={(event, page) => handlePaginationChange(page, event)}
-            button
-          />
-        </Stack>
-      </Box>
+      {characterInfo[0] ?
+        <>
+          <Divider style={{ paddingTop: '32px', width: '94%' }} />
+          <Box mt={2} display="flex" justifyContent="center">
+            <Stack spacing={2}>
+              <Pagination
+                count={pagination}
+                variant="outlined"
+                shape="rounded"
+                onChange={(event, page) => handlePaginationChange(page, event)}
+                button
+              />
+            </Stack>
+          </Box>
+        </>
+        : ''}
     </Box>
   );
 };

@@ -86,7 +86,12 @@ const Menu = ({ children }, props) => {
             </Box>
 
             <Grid style={{ width: '100%', height: '100vh' }}>
-                <Box component="main" sx={{ flexGrow: 1, p: 3, width: { sx: `calc(100% - ${drawerWidth}px)` } }}>
+                <Box component="main"
+                    sx={{
+                        flexGrow: 1,
+                        p: 4,
+                        width: { sx: `calc(100% - ${drawerWidth}px)` }
+                    }}>
                     <Toolbar />
                     <Box>{children}</Box>
                 </Box>
