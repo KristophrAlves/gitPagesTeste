@@ -7,6 +7,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Overview from './Overview';
 import { axiosInstance, createMarvelAPIUrl } from "../../baseUrls/axiosInstance";
+import OtherTabs from './OtherTabs';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -133,18 +134,47 @@ const Perfil = () => {
     },
   ]
 
+  const items = {
+    teams: [
+      { id: 0, name: 'Avengers' },
+      { id: 1, name: 'Defenders' },
+      { id: 2, name: 'Fantastic Four' },
+      { id: 3, name: 'Future Foundation' },
+      { id: 4, name: 'Heroes for Hire' },
+      { id: 5, name: 'The New Avengers' },
+      { id: 6, name: 'X-Mansion' }
+    ],
+    powers: [
+      { id: 0, name: 'Agility' },
+      { id: 1, name: 'Genius' },
+      { id: 2, name: 'Genius-level intellect' },
+      { id: 3, name: 'Precognitive' },
+      { id: 4, name: 'Precognitive spider-sense' },
+      { id: 5, name: 'Speed' },
+      { id: 6, name: 'Spider-sense' },
+      { id: 7, name: 'Superhuman strength' }
+    ],
+    species: [
+      { id: 0, name: 'Mutante' }
+    ],
+    Authors: [
+      { id: 0, name: 'Stan Lee' },
+      { id: 1, name: 'Steve Ditko' }
+    ]
+  };
+
   const renderOverview = () => {
     switch (overview) {
       case 0:
         return <Overview theme={theme} characterInfo={characterInfo[0]} />;
       case 1:
-        return <Typography></Typography>;
+        return <OtherTabs theme={theme} items={items.teams} />;
       case 2:
-        return <Typography></Typography>;
+        return <OtherTabs theme={theme} items={items.powers} />;;
       case 3:
-        return <Typography></Typography>;
+        return <OtherTabs theme={theme} items={items.species} />;;
       case 4:
-        return <Typography></Typography>;
+        return <OtherTabs theme={theme} items={items.Authors} />;;
       default:
         return null;
     }
