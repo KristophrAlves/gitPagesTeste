@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Grid, Switch, Typography } from '@mui/material';
 import { useTheme } from "styled-components";
 
 import PropTypes from 'prop-types';
@@ -41,6 +41,7 @@ const Perfil = () => {
   const [overview, setOverview] = useState(0);
   const characterId = window.location.pathname.match(/\d+/)[0];
   const [characterInfo, setCharacterInfo] = useState([]);
+  const [api, setApi] = useState(true);
 
   useEffect(() => {
     apiGetItens();
@@ -62,7 +63,11 @@ const Perfil = () => {
       const characterGroup = characters.map((character) => ({
         name: character.name,
         thumbnail: `${character.thumbnail.path}.${character.thumbnail.extension}`,
-        description: character.description
+        description: character.description,
+        comics: character.comics,
+        events: character.events,
+        series: character.series,
+        stories: character.stories,
       }));
       setCharacterInfo(characterGroup);
     } catch (error) {
@@ -111,7 +116,7 @@ const Perfil = () => {
     }
   }
 
-  const menu = [
+  const menuFigma = [
     {
       id: 1,
       label: 'Visão Geral'
@@ -132,7 +137,42 @@ const Perfil = () => {
       id: 5,
       label: 'Authors'
     },
-  ]
+  ];
+
+  const menuApi = [
+    {
+      id: 1,
+      label: 'Visão Geral'
+    },
+    {
+      id: 2,
+      label: 'Comics'
+    },
+    {
+      id: 3,
+      label: 'Events'
+    },
+    {
+      id: 4,
+      label: 'Series'
+    },
+    {
+      id: 5,
+      label: 'Stories'
+    },
+  ];
+
+  const [menu, setMenu] = useState(menuApi);
+
+  const handleChangeMenu = (event) => {
+    if (event) {
+      setApi(event);
+      setMenu(menuApi);
+    } else {
+      setApi(!api);
+      setMenu(menuFigma);
+    }
+  }
 
   const items = {
     teams: [
@@ -168,13 +208,13 @@ const Perfil = () => {
       case 0:
         return <Overview theme={theme} characterInfo={characterInfo[0]} />;
       case 1:
-        return <OtherTabs theme={theme} items={items.teams} />;
+        return <OtherTabs theme={theme} items={api ? characterInfo[0].comics.items : items.teams} />;
       case 2:
-        return <OtherTabs theme={theme} items={items.powers} />;;
+        return <OtherTabs theme={theme} items={api ? characterInfo[0].events.items : items.powers} />;
       case 3:
-        return <OtherTabs theme={theme} items={items.species} />;;
+        return <OtherTabs theme={theme} items={api ? characterInfo[0].series.items : items.species} />;
       case 4:
-        return <OtherTabs theme={theme} items={items.Authors} />;;
+        return <OtherTabs theme={theme} items={api ? characterInfo[0].stories.items : items.Authors} />;
       default:
         return null;
     }
@@ -195,12 +235,18 @@ const Perfil = () => {
       </Grid>
 
       <Box sx={{ width: '100%' }}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Box sx={{ display: "flex", borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={value} onChange={handleChange}>
             {menu.map((item) => (
               <Tab key={item.id} style={styles.tab} label={item.label} onChange={() => setValue(item.id)} />
             ))}
           </Tabs>
+
+          <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1, justifyContent: 'flex-end' }}>
+            <Typography>Figma</Typography>
+            <Switch defaultChecked value={api} onClick={(event) => handleChangeMenu(event.target.checked)} />
+            <Typography>Api</Typography>
+          </Box>
         </Box>
 
         <CustomTabPanel value={value} index={overview} >
