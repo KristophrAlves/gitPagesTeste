@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.js": "/gitPagesTeste/static/js/main.27fc25cc.js",
+    "static/media/bro.svg": "/gitPagesTeste/static/media/bro.6bd5b6f02540339920c4275b841b5d68.svg",
+    "static/media/logo_pontua_white.svg": "/gitPagesTeste/static/media/logo_pontua_white.0129db120ed2d1eafc7adebef49d8686.svg",
+    "static/media/PontuaLogoSecondary.svg": "/gitPagesTeste/static/media/PontuaLogoSecondary.d8844a7161f295b80bf9407f3160209c.svg",
+    "static/media/interrogatorio-de-escudo.svg": "/gitPagesTeste/static/media/interrogatorio-de-escudo.4bda1625ac6433ce2eee8ecdc31becd9.svg",
+    "index.html": "/gitPagesTeste/index.html",
+    "static/media/userRed.svg": "/gitPagesTeste/static/media/userRed.ce16d0b6592be8f17dac77f200dec9db.svg",
+    "static/media/user.svg": "/gitPagesTeste/static/media/user.38f481f3fab21dd9a0d75a0150184b37.svg",
+    "static/media/search.svg": "/gitPagesTeste/static/media/search.fb98eb35dbbf9f6e46f9a21544ee7df5.svg",
+    "static/media/corner-up-left.svg": "/gitPagesTeste/static/media/corner-up-left.2ba365972ea40c57ecc98c39f1dd1108.svg",
+    "main.27fc25cc.js.map": "/gitPagesTeste/static/js/main.27fc25cc.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.27fc25cc.js"
+  ]
+}
