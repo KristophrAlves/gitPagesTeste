@@ -1,10 +1,13 @@
 import axios from 'axios';
-import { privateKey, publicKey } from './keys';
+// import { privateKey, publicKey } from './keys';
 
 const generateMD5Hash = (str) => {
     let md5 = require('blueimp-md5');
     return md5(str);
 };
+
+const publicKey = localStorage.getItem("publicKey");
+const privateKey = localStorage.getItem("privateKey");
 
 const ts = new Date().getTime();
 const hash = generateMD5Hash(ts + privateKey + publicKey);
