@@ -22,7 +22,7 @@ import {
     Customdot
 } from "./Styles";
 
-const Step1 = ({ SetCurrentStep }) => {
+const Step1 = ({ setCurrentStep }) => {
     const classes = useStyles();
     const { signin } = useAuth();
     const [email, setEmail] = useState("");
@@ -61,7 +61,7 @@ const Step1 = ({ SetCurrentStep }) => {
             return;
         }
 
-        SetCurrentStep(4);
+        setCurrentStep(4);
     };
 
     const inputs = [
@@ -139,7 +139,7 @@ const Step1 = ({ SetCurrentStep }) => {
                 </CustomButtonPrimary>
 
                 <CustomForgotPassword>
-                    <Button onClick={() => SetCurrentStep(2)}>
+                    <Button onClick={() => setCurrentStep(2)}>
                         <CustomTextForgotPassword>
                             <CustomImgIcon
                                 src={ShieldQuestion}

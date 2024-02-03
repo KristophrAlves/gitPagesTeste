@@ -9,6 +9,8 @@ const generateMD5Hash = (str) => {
 const publicKey = localStorage.getItem("publicKey");
 const privateKey = localStorage.getItem("privateKey");
 
+console.log("publicKey", publicKey)
+
 const ts = new Date().getTime();
 const hash = generateMD5Hash(ts + privateKey + publicKey);
 

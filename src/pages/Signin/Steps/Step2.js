@@ -13,7 +13,7 @@ import {
     Customdot
 } from "./Styles";
 
-const Step2 = ({ SetCurrentStep }) => {
+const Step2 = ({ setCurrentStep }) => {
     const classes = useStyles();
     const [email, setEmail] = useState("");
     const [error, setError] = useState("");
@@ -28,7 +28,7 @@ const Step2 = ({ SetCurrentStep }) => {
             return;
         }
 
-        SetCurrentStep(3)
+        setCurrentStep(3)
     };
 
 

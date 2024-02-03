@@ -6,19 +6,27 @@ import Step4 from "./Steps/Step4";
 import Grid from "@mui/material/Grid";
 import Building from "../../assets/images/bro.svg";
 import Logo from "../../assets/images/logo_pontua_white.svg";
+import { Button, Input } from "@mui/material";
 
 const Signin = () => {
 
-  const [currentStep, SetCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(1);
+  const [publicKey, setPublicKey] = useState();
+  const [privateKey, setPrivateKey] = useState();
+
+  const setKeys = () => {
+    localStorage.setItem("publicKey", publicKey);
+    localStorage.setItem("privateKey", privateKey);
+  }
 
   const renderStep = () => {
     switch (currentStep) {
       case 1:
-        return <Step1 SetCurrentStep={SetCurrentStep} />;
+        return <Step1 setCurrentStep={setCurrentStep} />;
       case 2:
-        return <Step2 SetCurrentStep={SetCurrentStep} />;
+        return <Step2 setCurrentStep={setCurrentStep} />;
       case 3:
-        return <Step3 SetCurrentStep={SetCurrentStep} />;
+        return <Step3 setCurrentStep={setCurrentStep} />;
       case 4:
         return <Step4 />;
       default:
@@ -61,7 +69,24 @@ const Signin = () => {
 
         </Grid>
       </Grid>
-    </Grid>
+
+      <Grid style={{
+        width: '20%',
+        margin: 12,
+        padding: 8,
+        borderRadius: 20,
+        backgroundColor: 'white',
+      }}>
+        <Grid>
+          <Input placeholder="publicKey" onChange={(e) => setPublicKey(e.target.value)}></Input>
+          <Input placeholder="privateKey" onChange={(e) => setPrivateKey(e.target.value)}></Input>
+        </Grid>
+        <Button onClick={() => setKeys()}>
+          Enviar
+        </Button>
+      </Grid>
+
+    </Grid >
   );
 };
 

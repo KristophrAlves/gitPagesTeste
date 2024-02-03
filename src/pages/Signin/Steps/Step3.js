@@ -10,7 +10,7 @@ import {
     Customdot
 } from "./Styles";
 
-const Step3 = ({ SetCurrentStep }) => {
+const Step3 = ({ setCurrentStep }) => {
     const theme = useTheme();
 
     const styles = {
@@ -105,7 +105,7 @@ const Step3 = ({ SetCurrentStep }) => {
                 <CustomButtonPrimary
                     variant="contained"
                     color="primary"
-                    onClick={() => SetCurrentStep(1)}
+                    onClick={() => setCurrentStep(1)}
                 >
                     <CustomTextButton>
                         voltar para o login
